@@ -31,6 +31,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}   # ← ZORUNLU
           password: ${{ secrets.FTP_PASSWORD }}   # ← ZORUNLU
           server-dir: /                           # önceki gibi kalabilir (çoğu hostta web kökü /public_html/ olur)
-          local-dir: dist                         # ./dist de olur; önerim sadece 'dist'
+          local-dir: dist/                         # ./dist de olur; önerim sadece 'dist'
           # protocol: sftp                        # gerekiyorsa aç
           # port: 22                              # gerekiyorsa ekle
