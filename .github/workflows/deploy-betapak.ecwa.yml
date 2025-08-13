@@ -1,24 +1,36 @@
-name: 🚀 Deploy to FTP
+name: 🚀 Build & Deploy Vue to FTP
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   ftp-deploy:
-    name: Upload files to FTP server
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: FTP Deploy
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /
-        local-dir: ./
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: FTP Deploy (dist -> /)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server:   ${{ secrets.FTP_HOST }}       # ← ZORUNLU
+          username: ${{ secrets.FTP_USERNAME }}   # ← ZORUNLU
+          password: ${{ secrets.FTP_PASSWORD }}   # ← ZORUNLU
+          server-dir: /                           # önceki gibi kalabilir (çoğu hostta web kökü /public_html/ olur)
+          local-dir: dist                         # ./dist de olur; önerim sadece 'dist'
+          # protocol: sftp                        # gerekiyorsa aç
+          # port: 22                              # gerekiyorsa ekle
