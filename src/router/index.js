@@ -10,12 +10,19 @@ import Reports from '@/pages/Reports.vue'
 import Settings from '@/pages/Settings.vue'
 import Support from '@/pages/Support.vue'
 import Users from '@/pages/Users.vue'
+import VerifyEmail from '@/pages/VerifyEmail.vue'
 
 const routes = [
   {
     path: '/login',
     name: 'Login',
     component: Login,
+    meta: { requiresGuest: true }
+  },
+  {
+    path: '/verify-email',
+    name: 'VerifyEmail',
+    component: VerifyEmail,
     meta: { requiresGuest: true }
   },
   {

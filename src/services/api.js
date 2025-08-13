@@ -3,7 +3,7 @@ import axios from 'axios'
 // API Configuration
 const API_CONFIG = {
   // Ortam belirteci - geliştirme ortamında false, canlı ortamda true olmalı
-  isProd: false, // Canlı ortamda bu değeri true yapınız
+  isProd: true, // Canlı ortamda bu değeri true yapınız
   
   // Base URL dinamik olarak belirleniyor
   get BASE_URL() {
@@ -14,7 +14,9 @@ const API_CONFIG = {
   ENDPOINTS: {
     LOGIN: '/Auth/login',
     PROJECTS: '/Projects',
-    USERS: '/Users'
+    USERS: '/Users',
+    PASSWORD_VERIFY_TOKEN: '/Auth/password/verify-token',
+    PASSWORD_RESET: '/Auth/password/reset'
   },
   
   // Token settings
@@ -207,6 +209,28 @@ export const AuthService = {
   // Check if user is authenticated
   isAuthenticated() {
     return TokenService.hasToken() && !TokenService.isTokenExpired()
+  },
+
+  // Verify reset token for email
+  async verifyPasswordToken(email, token) {
+    try {
+      const response = await apiClient.post(API_CONFIG.ENDPOINTS.PASSWORD_VERIFY_TOKEN, { email, token })
+      return response
+    } catch (error) {
+      console.error('Verify token error:', error)
+      throw error
+    }
+  },
+
+  // Reset password using token
+  async resetPassword(email, token, newPassword) {
+    try {
+      const response = await apiClient.post(API_CONFIG.ENDPOINTS.PASSWORD_RESET, { email, token, newPassword })
+      return response
+    } catch (error) {
+      console.error('Reset password error:', error)
+      throw error
+    }
   }
 }
 
