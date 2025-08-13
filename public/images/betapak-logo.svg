@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="100" viewBox="0 0 320 100">
+  <g>
+    <!-- Red Cube -->
+    <path d="M15 25 L45 5 L75 25 L45 45 Z" fill="#d61f1f"/>
+    <path d="M15 25 L15 65 L45 85 L45 45 Z" fill="#c41818"/>
+    <path d="M45 45 L45 85 L75 65 L75 25 Z" fill="#a21414"/>
+    
+    <!-- Beta-Pak Text -->
+    <text x="90" y="45" font-family="Arial, sans-serif" font-size="38" font-weight="bold" fill="#1a1a3a">Beta-Pak</text>
+    <text x="90" y="75" font-family="Arial, sans-serif" font-size="18" fill="#1a1a3a">Smart Packaging</text>
+  </g>
+</svg> 

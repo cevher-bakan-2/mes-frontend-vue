@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+}
+
+/* Custom Components */
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+  }
+  
+  .form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden;
+  }
+  
+  .sidebar-item {
+    @apply flex items-center px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400;
+  }
+  
+  .table-header {
+    @apply px-3 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400 bg-blue-50 dark:bg-gray-700;
+  }
+  
+  .table-cell {
+    @apply px-3 py-2 whitespace-nowrap text-xs text-gray-900 dark:text-white;
+  }
+  
+  .progress-bar {
+    @apply w-full h-2 bg-gray-200 rounded-full overflow-hidden shadow-inner;
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+  }
+  
+  /* Chart Container */
+  .chart-container {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 flex flex-col items-center;
+  }
+  
+  .chart-title {
+    @apply text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 text-center;
+  }
+  
+  .chart-legend {
+    @apply flex flex-wrap gap-y-0 mt-1 px-1;
+  }
+  
+  .legend-item {
+    @apply flex items-center mr-2 mb-0.5;
+  }
+  
+  .legend-color {
+    @apply w-2.5 h-2.5 inline-block rounded-full flex-shrink-0 mr-0.5;
+  }
+  
+  .legend-text {
+    @apply text-xs leading-none text-gray-700 dark:text-gray-300;
+  }
+  
+  /* Filter Dropdown */
+  .filter-dropdown {
+    @apply absolute z-50 mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg min-w-[200px] max-w-[300px];
+  }
+  
+  .filter-option {
+    @apply flex items-center px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer;
+  }
+  
+  .filter-indicator {
+    @apply absolute -top-1 -right-1 w-2 h-2 bg-blue-600 rounded-full;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .border-dashed-custom {
+    border-style: dashed;
+    border-width: 2px;
+  }
+  
+  /* Scrollbar Styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #6b7280 transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #4b5563;
+  }
+}
+
+/* Animation Classes */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+/* Loading Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Add Project specific styles (ported from /css/add-project.css) */
+[v-cloak] { display: none; }
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 20px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px; width: 14px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .toggle-slider { background-color: #3B82F6; }
+input:checked + .toggle-slider:before { transform: translateX(20px); }
+.dark .toggle-slider { background-color: #374151; }
+.dark input:checked + .toggle-slider { background-color: #3B82F6; }
+input:disabled + .toggle-slider { opacity: 0.5; cursor: not-allowed; }
+.toggle-container-disabled { opacity: 0.5; }
+.toggle-switch input:disabled + .toggle-slider + span { color: #9CA3AF; }
+
+.custom-date-input { position: relative; }
+.custom-date-input input[type="date"] { position: relative; background: transparent; z-index: 1; cursor: pointer; }
+.custom-date-input input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute; right: 0; top: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2;
+}
+.custom-date-input input[type="date"]::-webkit-inner-spin-button,
+.custom-date-input input[type="date"]::-webkit-clear-button { display: none; }
+.custom-date-input .date-placeholder {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  display: flex; align-items: center; padding-left: 8px; pointer-events: none; color: #9CA3AF; z-index: 1;
+}
+.custom-date-input input[type="date"]:valid + .date-placeholder,
+.custom-date-input input[type="date"]:focus + .date-placeholder { display: none; }
+
+/* Multiselect Dropdown */
+.multiselect-dropdown { position: relative; width: 100%; }
+.multiselect-dropdown-toggle {
+  cursor: pointer; width: 100%; text-align: left; padding: 5px 10px; background-color: white;
+  border: 1px solid #D1D5DB; border-radius: 4px; height: 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px;
+}
+.dark .multiselect-dropdown-toggle { background-color: #1F2937; border-color: #4B5563; color: white; }
+.multiselect-dropdown-toggle:hover { border-color: #93C5FD; }
+.multiselect-dropdown-toggle:focus { outline: none; border-color: #3B82F6; box-shadow: 0 0 0 3px rgba(59,130,246,0.25); }
+.multiselect-dropdown-menu {
+  position: absolute; top: 100%; left: 0; z-index: 10; margin-top: 4px; width: 100%; background-color: white; border: 1px solid #D1D5DB;
+  border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); max-height: 150px; overflow-y: auto;
+}
+.multiselect-dropdown-menu::-webkit-scrollbar { width: 6px; }
+.multiselect-dropdown-menu::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+.multiselect-dropdown-menu::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+.multiselect-dropdown-menu::-webkit-scrollbar-thumb:hover { background: #555; }
+.dark .multiselect-dropdown-menu { background-color: #1F2937; border-color: #4B5563; color: white; }
+.multiselect-option { display: block; padding: 6px 8px; cursor: pointer; font-size: 11px; user-select: none; transition: background-color 0.15s; }
+.multiselect-option.flex { display: flex; }
+.multiselect-option:hover { background-color: #F3F4F6; }
+.dark .multiselect-option:hover { background-color: #374151; }
+.multiselect-option label { display: flex; align-items: center; cursor: pointer; margin: 0 !important; font-size: 11px !important; width: 100%; height: 100%; }
+.multiselect-option input[type="checkbox"] { margin-right: 6px; height: 14px; width: 14px; cursor: pointer; }
+.multiselect-selected-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.multiselect-clear-icon { margin-left: 8px; cursor: pointer; color: #9CA3AF; }
+.multiselect-clear-icon:hover { color: #EF4444; }
