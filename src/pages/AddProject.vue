@@ -39,6 +39,19 @@
               </div>
             </div>
 
+            <!-- Başarılı Kayıt Pop-up -->
+            <div v-if="showSuccessModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div class="bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 w-96 text-center border border-gray-200 dark:border-slate-700">
+                <div class="mx-auto mb-3 h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                  <svg class="h-7 w-7 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white">Proje başarıyla kaydedildi</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Ana sayfaya yönlendiriliyorsunuz...</p>
+              </div>
+            </div>
+
             <form @submit.prevent="onFormSubmit">
       <ProjectSection :project="project" :countries="countries" :states="states" :loadingStates="loadingStates" :pdfFileName="pdfFileName" :currentDate="currentDate" @pdf-upload="handlePdfUpload" @country-change="onCountryChange" @update-penalty="updateCezaiSartDate" />
 
@@ -94,6 +107,7 @@
 
 <script>
 import { ref, reactive, computed, onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import AppSidebar from '@/components/AppSidebar.vue'
 import AppHeader from '@/components/AppHeader.vue'
 import { Project } from '@/models/Project.js'
@@ -116,6 +130,7 @@ export default {
   name: 'AddProject',
   components: { AppSidebar, AppHeader, ProjectSection, MachineSection, FillingSection, BottomFoilSection, TopFoilSection, HygieneSection, EndOfLineSection, AccessorySection, PackagingSection, ExtrasSection },
   setup() {
+    const router = useRouter()
     const isSidebarOpen = ref(window.innerWidth >= 1024)
     const isSidebarCollapsed = ref(localStorage.getItem('sidebarCollapsed') === 'true')
     const handleSidebarCollapse = (collapsed) => { isSidebarCollapsed.value = collapsed }
@@ -137,6 +152,7 @@ export default {
     const customItemValue = ref('')
     
     const showKesmeTipiCountModal = ref(false)
+    const showSuccessModal = ref(false)
     const currentKesmeTipi = ref('')
     const currentKesmeTipiOption = ref(null)
     const kesmeTipiCountValue = ref(1)
@@ -502,7 +518,7 @@ export default {
         sectionTopFoil:{ isAvailable:!!project.ustFolyoSection.ustFolyo, foilTypeName:Array.isArray(project.ustFolyoSection.selectedUstFolyoCesidi)?project.ustFolyoSection.selectedUstFolyoCesidi.join(', '):'', foilThickness:project.ustFolyoSection.ustFolyoKalinlik||'', foilWidth:project.ustFolyoSection.ustFolyoEni||'', foilSupply:project.ustFolyoSection.ustFolyoTedarik||'', uv:!!project.ustFolyoSection.ustFolyoUV, webCleaningAntistatic:!!project.ustFolyoSection.ustFolyoAntistatik, foilNotes:project.ustFolyoSection.ustFolyoNotlar||'' },
         sectionBottomFoil:{ sectionBottomFoilSoft:{ isAvailable:project.altFolyoSection.altFolyoYumusak?.isAvailable||false, foilTypeName:Array.isArray(project.altFolyoSection.selectedAltFolyoCesidiYumusak)?project.altFolyoSection.selectedAltFolyoCesidiYumusak.join(', '):'', foilThickness:project.altFolyoSection.altFolyoYumusak?.foilThickness||'', foilWidth:project.altFolyoSection.altFolyoYumusak?.foilWidth||'', foilSupply:project.altFolyoSection.altFolyoYumusak?.foilSupply||'', uv:!!project.altFolyoSection.altFolyoYumusak?.uv, webCleaningAntistatic:!!project.altFolyoSection.altFolyoYumusak?.webCleaningAntistatic }, sectionBottomFoilHard:{ isAvailable:project.altFolyoSection.altFolyoSert?.isAvailable||false, foilTypeName:Array.isArray(project.altFolyoSection.selectedAltFolyoCesidiSert)?project.altFolyoSection.selectedAltFolyoCesidiSert.join(', '):'', foilThickness:project.altFolyoSection.altFolyoSert?.foilThickness||'', foilWidth:project.altFolyoSection.altFolyoSert?.foilWidth||'', foilSupply:project.altFolyoSection.altFolyoSert?.foilSupply||'', uv:!!project.altFolyoSection.altFolyoSert?.uv, webCleaningAntistatic:!!project.altFolyoSection.altFolyoSert?.webCleaningAntistatic }, foilNotes:project.altFolyoSection.foilNotes||'' },
         sectionHygiene:{ sterileAirFilter:project.hijyenSection.sterilHavaFiltresi||'', hepa:!!project.hijyenSection.hepa, ultraClean:!!project.hijyenSection.ultraClean, fullCIP:!!project.hijyenSection.cipFull, cipInOut:!!project.hijyenSection.cipInOut, sip:!!project.hijyenSection.sip, hygieneNotes:project.hijyenSection.hijyenNotlari||'' },
-        sectionEndOfLine:{ isRobot:!!project.hatSonuSection.robot, robotType:project.hatSonuSection.robotTipi||'', robotModel:project.hatSonuSection.robotModeli||'', boxOpening:!!project.hatSonuSection.koliAcma, boxClosing:!!project.hatSonuSection.koliKapatma, endOfLineNotes:project.hatSonuSection.hatSonuNotlari||'' },
+        sectionEndOfLine:{ isRobot:!!project.hatSonuSection.robot, robotType:project.hatSonuSection.robotTipi||'', robotModel:project.hatSonuSection.robotModeli||'', boxOpening:!!project.hatSonuSection.koliAcma, boxClosing:!!project.hatSonuSection.koliKapatma, boxMachine: !!project.hatSonuSection.boxMachine, endOfLineNotes:project.hatSonuSection.hatSonuNotlari||'' },
         sectionAccessory:{
           vacuumPumpType: project.aksesuarSection.vakumPompasiTipi || '',
           vacuumPumpModel: Array.isArray(project.aksesuarSection.selectedVakumModelleri)
@@ -536,7 +552,7 @@ export default {
         sectionExtras:{ extraFileName:extraName||'', extraNotes:project.ekstraSection.digerNotlar||'' }
       }
     }
-    const saveProject = async () => { try{ const mainPdf = project.projeSection.pdfFile ? await uploadFile(project.projeSection.pdfFile) : ''; const extra = project.ekstraSection.extraPdfFile ? await uploadFile(project.ekstraSection.extraPdfFile) : ''; const data = buildPayload(mainPdf, extra); await ApiService.post('/Projects/create-with-sections', data); alert('Proje başarıyla kaydedildi!') } catch(e){ console.error(e); alert(`Proje kaydedilirken hata oluştu: ${e.message||e}`) } }
+    const saveProject = async () => { try{ const mainPdf = project.projeSection.pdfFile ? await uploadFile(project.projeSection.pdfFile) : ''; const extra = project.ekstraSection.extraPdfFile ? await uploadFile(project.ekstraSection.extraPdfFile) : ''; const data = buildPayload(mainPdf, extra); await ApiService.post('/Projects/create-with-sections', data); showSuccessModal.value = true; setTimeout(() => { router.push('/') }, 3500) } catch(e){ console.error(e); alert(`Proje kaydedilirken hata oluştu: ${e.message||e}`) } }
 
     // Watch for machine type changes to reset related fields
     watch(() => project.makineSection.kesmeTipi, (newValue) => {
@@ -571,6 +587,7 @@ export default {
       showCustomModal, customModalTitle, customItemValue, showCustomModalForField, closeCustomModal, addCustomItem,
       showKesmeTipiCountModal, currentKesmeTipi, kesmeTipiCountValue, showKesmeTipiCountModalForItem, 
       closeKesmeTipiCountModal, addKesmeTipiWithCount,
+      showSuccessModal,
       // Refs
       machineSectionRef
     }

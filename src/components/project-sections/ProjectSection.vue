@@ -1,7 +1,6 @@
 <template>
   <div class="mb-3 mt-2 bg-gray-50 dark:bg-slate-700 p-4 rounded-lg">
     <h2 class="text-lg font-bold mb-1 text-gray-800 dark:text-white">Proje Oluşturma!</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Bölüm-1</p>
 
     <div class="flex items-end mb-3">
       <div class="w-[150px] mr-[6px]">

@@ -379,6 +379,10 @@
                     <div class="text-xs font-bold text-gray-700 pb-1 border-b border-gray-200 mb-1">Koli Kapama</div>
                     <div class="text-xs text-gray-900">{{ projectData?.sectionEndOfLine?.boxClosing ? 'Var' : 'Yok' }}</div>
                   </div>
+                  <div class="bg-white rounded p-2">
+                    <div class="text-xs font-bold text-gray-700 pb-1 border-b border-gray-200 mb-1">Kutu Makinesi</div>
+                    <div class="text-xs text-gray-900">{{ projectData?.sectionEndOfLine?.boxMachine ? 'Var' : 'Yok' }}</div>
+                  </div>
                 </div>
               </div>
             </div>

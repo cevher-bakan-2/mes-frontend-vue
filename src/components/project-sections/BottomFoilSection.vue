@@ -2,7 +2,6 @@
   <!-- Alt Folyo Grubu! Section -->
   <div class="mb-3 mt-2 bg-gray-100 dark:bg-slate-700 p-4 rounded-lg">
     <h2 class="text-lg font-bold mb-1 text-gray-800 dark:text-white">Alt Folyo Grubu!</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Bölüm-4</p>
 
     <div class="flex">
       <div class="flex-1">
@@ -75,11 +74,11 @@
           </div>
 
           <!-- Alt Folyo UV Yumuşak -->
-          <div class="w-[75px] mr-[6px]" :class="{'opacity-50': !project.altFolyoSection.altFolyoYumusak.isAvailable}">
+          <div class="w-[75px] mr-[6px]">
             <div class="flex flex-col items-center">
               <label for="altFolyoUVYumusak" class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 text-center">UV</label>
               <label class="toggle-switch" style="width: 40px; height: 20px;">
-                <input type="checkbox" v-model="project.altFolyoSection.altFolyoYumusak.uv" :disabled="!project.altFolyoSection.altFolyoYumusak.isAvailable">
+                <input type="checkbox" v-model="project.altFolyoSection.altFolyoYumusak.uv">
                 <span class="toggle-slider" style="width: 40px; height: 20px;"></span>
               </label>
               <span class="text-xs text-gray-500 mt-1">Yok/Var</span>
@@ -87,11 +86,11 @@
           </div>
 
           <!-- Alt Folyo Web Cleaning & Antistatik Yumuşak -->
-          <div class="w-[75px] mr-[6px]" :class="{'opacity-50': !project.altFolyoSection.altFolyoYumusak.isAvailable}">
+          <div class="w-[75px] mr-[6px]">
             <div class="flex flex-col items-center">
               <label for="altFolyoWebCleaningAntistatikYumusak" class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 text-center">Web Cleaning<br>& Antistatik</label>
               <label class="toggle-switch" style="width: 40px; height: 20px;">
-                <input type="checkbox" v-model="project.altFolyoSection.altFolyoYumusak.webCleaningAntistatic" :disabled="!project.altFolyoSection.altFolyoYumusak.isAvailable">
+                <input type="checkbox" v-model="project.altFolyoSection.altFolyoYumusak.webCleaningAntistatic">
                 <span class="toggle-slider" style="width: 40px; height: 20px;"></span>
               </label>
               <span class="text-xs text-gray-500 mt-1">Yok/Var</span>
@@ -168,11 +167,11 @@
           </div>
 
           <!-- UV - Sert -->
-          <div class="w-[75px] mr-[6px]" :class="{'opacity-50': !project.altFolyoSection.altFolyoSert.isAvailable}">
+          <div class="w-[75px] mr-[6px]">
             <div class="flex flex-col items-center">
               <label for="altFolyoUVSert" class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 text-center">UV</label>
               <label class="toggle-switch" style="width: 40px; height: 20px;">
-                <input type="checkbox" v-model="project.altFolyoSection.altFolyoSert.uv" :disabled="!project.altFolyoSection.altFolyoSert.isAvailable">
+                <input type="checkbox" v-model="project.altFolyoSection.altFolyoSert.uv">
                 <span class="toggle-slider" style="width: 40px; height: 20px;"></span>
               </label>
               <span class="text-xs text-gray-500 mt-1">Yok/Var</span>
@@ -180,11 +179,11 @@
           </div>
 
           <!-- Web Cleaning & Antistatik - Sert -->
-          <div class="w-[75px] mr-[6px]" :class="{'opacity-50': !project.altFolyoSection.altFolyoSert.isAvailable}">
+          <div class="w-[75px] mr-[6px]">
             <div class="flex flex-col items-center">
               <label for="altFolyoWebCleaningAntistatikSert" class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 text-center">Web Cleaning<br>& Antistatik</label>
               <label class="toggle-switch" style="width: 40px; height: 20px;">
-                <input type="checkbox" v-model="project.altFolyoSection.altFolyoSert.webCleaningAntistatic" :disabled="!project.altFolyoSection.altFolyoSert.isAvailable">
+                <input type="checkbox" v-model="project.altFolyoSection.altFolyoSert.webCleaningAntistatic">
                 <span class="toggle-slider" style="width: 40px; height: 20px;"></span>
               </label>
               <span class="text-xs text-gray-500 mt-1">Yok/Var</span>

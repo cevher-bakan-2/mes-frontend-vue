@@ -2,7 +2,6 @@
   <!-- Hat Sonu Grubu! Section -->
   <div class="w-[49.7%] mb-3 mt-2 bg-gray-100 dark:bg-slate-700 p-4 rounded-lg">
     <h2 class="text-lg font-bold mb-1 text-gray-800 dark:text-white">Hat Sonu Grubu!</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Bölüm-7</p>
 
     <!-- Hat Sonu row - All on a single row -->
     <div class="flex items-end mb-3">
@@ -25,6 +24,7 @@
           <option value="" selected>Seçiniz!</option>
           <option value="Tek Kafa">Tek Kafa</option>
           <option value="Çift Kafa">Çift Kafa</option>
+          <option value="Üç Kafa">Üç Kafa</option>
         </select>
       </div>
 
@@ -57,6 +57,18 @@
         <div>
           <label class="toggle-switch" style="width: 40px; height: 20px;">
             <input type="checkbox" v-model="project.hatSonuSection.koliKapatma" :disabled="!project.hatSonuSection.robot">
+            <span class="toggle-slider" style="width: 40px; height: 20px;"></span>
+          </label>
+          <span class="text-xs text-gray-500 mt-1 block">Yok/Var</span>
+        </div>
+      </div>
+
+      <!-- Kutu Makinesi -->
+      <div class="flex flex-col items-center w-[75px]" :class="{'opacity-50': !project.hatSonuSection.robot}">
+        <label for="boxMachine" class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1 text-center">Kutu Makinesi</label>
+        <div>
+          <label class="toggle-switch" style="width: 40px; height: 20px;">
+            <input type="checkbox" v-model="project.hatSonuSection.boxMachine" :disabled="!project.hatSonuSection.robot">
             <span class="toggle-slider" style="width: 40px; height: 20px;"></span>
           </label>
           <span class="text-xs text-gray-500 mt-1 block">Yok/Var</span>

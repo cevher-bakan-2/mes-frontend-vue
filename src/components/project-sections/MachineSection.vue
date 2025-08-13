@@ -2,7 +2,6 @@
   <!-- Makine Oluşturma Section -->
   <div class="mb-3 mt-2 bg-gray-100 dark:bg-slate-700 p-4 rounded-lg">
     <h2 class="text-lg font-bold mb-1 text-gray-800 dark:text-white">Makine Oluşturma!</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Bölüm-2</p>
 
     <div class="flex items-end mb-3">
       <!-- Kalıp Sayısı (Moved to the beginning) -->

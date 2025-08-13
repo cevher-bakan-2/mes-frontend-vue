@@ -2,7 +2,6 @@
   <!-- Paketleme Tercihleri! Section -->
   <div class="w-full md:w-[49.7%] mb-3 mt-2 bg-gray-100 dark:bg-slate-700 p-4 rounded-lg">
     <h2 class="text-lg font-bold mb-1 text-gray-800 dark:text-white">Paketleme Tercihleri!</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Bölüm-9</p>
 
     <!-- Paketleme row - All on a single row -->
     <div class="flex items-end mb-3">

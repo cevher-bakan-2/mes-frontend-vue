@@ -150,7 +150,8 @@ export class Project {
       robot: false,
       boxOpen: false,
       boxClose: false,
-      etiketUnitesi: false
+      etiketUnitesi: false,
+      boxMachine: false
     }
 
     this.aksesuarSection = {

@@ -2,7 +2,6 @@
   <!-- Ekstralar! Section -->
   <div class="w-full md:w-[49.7%] mb-3 mt-2 bg-gray-100 dark:bg-slate-700 p-4 rounded-lg relative">
     <h2 class="text-lg font-bold mb-1 text-gray-800 dark:text-white">Ekstralar!</h2>
-    <p class="text-xs text-gray-600 dark:text-gray-400 mb-3">Bölüm-10</p>
 
     <!-- PDF Yükleme - Sağ üst köşe -->
     <div class="absolute top-4 right-4">
